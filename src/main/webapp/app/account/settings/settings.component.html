@@ -1,0 +1,197 @@
+<div>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h2 *ngIf="account">
+        User settings for [<strong>{{ account.login }}</strong
+        >]
+      </h2>
+      <h2>hhhhhhhh{{ curuser.id }}</h2>
+      <div class="alert alert-success" *ngIf="success">
+        <strong>Settings saved!</strong>
+      </div>
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <form name="form" role="form" (ngSubmit)="save()" [formGroup]="settingsForm" *ngIf="account" novalidate>
+        <div class="form-group">
+          <label class="form-control-label" for="firstName">First Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="firstName"
+            name="firstName"
+            placeholder="Your first name"
+            formControlName="firstName"
+            data-cy="firstname"
+          />
+
+          <div
+            *ngIf="
+              settingsForm.get('firstName')!.invalid && (settingsForm.get('firstName')!.dirty || settingsForm.get('firstName')!.touched)
+            "
+          >
+            <small class="form-text text-danger" *ngIf="settingsForm.get('firstName')?.errors?.required">
+              Your first name is required.
+            </small>
+
+            <small class="form-text text-danger" *ngIf="settingsForm.get('firstName')?.errors?.minlength">
+              Your first name is required to be at least 1 character.
+            </small>
+
+            <small class="form-text text-danger" *ngIf="settingsForm.get('firstName')?.errors?.maxlength">
+              Your first name cannot be longer than 50 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="lastName">Last Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="lastName"
+            name="lastName"
+            placeholder="Your last name"
+            formControlName="lastName"
+            data-cy="lastname"
+          />
+
+          <div
+            *ngIf="settingsForm.get('lastName')!.invalid && (settingsForm.get('lastName')!.dirty || settingsForm.get('lastName')!.touched)"
+          >
+            <small class="form-text text-danger" *ngIf="settingsForm.get('lastName')?.errors?.required">
+              Your last name is required.
+            </small>
+
+            <small class="form-text text-danger" *ngIf="settingsForm.get('lastName')?.errors?.minlength">
+              Your last name is required to be at least 1 character.
+            </small>
+
+            <small class="form-text text-danger" *ngIf="settingsForm.get('lastName')?.errors?.maxlength">
+              Your last name cannot be longer than 50 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="email">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            placeholder="Your email"
+            formControlName="email"
+            data-cy="email"
+          />
+
+          <div *ngIf="settingsForm.get('email')!.invalid && (settingsForm.get('email')!.dirty || settingsForm.get('email')!.touched)">
+            <small class="form-text text-danger" *ngIf="settingsForm.get('email')?.errors?.required"> Your email is required. </small>
+
+            <small class="form-text text-danger" *ngIf="settingsForm.get('email')?.errors?.email"> Your email is invalid. </small>
+
+            <small class="form-text text-danger" *ngIf="settingsForm.get('email')?.errors?.minlength">
+              Your email is required to be at least 5 characters.
+            </small>
+
+            <small class="form-text text-danger" *ngIf="settingsForm.get('email')?.errors?.maxlength">
+              Your email cannot be longer than 100 characters.
+            </small>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-control-label" for="height">Height</label>
+          <input
+            type="text"
+            class="form-control"
+            id="height"
+            name="height"
+            placeholder="Your height in cm"
+            formControlName="height"
+            data-cy="height"
+          />
+
+          <div *ngIf="settingsForm.get('height')!.invalid && (settingsForm.get('height')!.dirty || settingsForm.get('height')!.touched)">
+            <small class="form-text text-danger" *ngIf="settingsForm.get('height')?.errors?.required"> Your height is required. </small>
+
+            <small class="form-text text-danger" *ngIf="settingsForm.get('height')?.errors?.maxlength">
+              Your not actually that tall are you ?
+            </small>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-control-label" for="workoutsPerWeek">Workouts Per Week</label>
+          <input
+            type="text"
+            class="form-control"
+            id="workoutsPerWeek"
+            name="workoutsPerWeek"
+            placeholder="Workouts per week"
+            formControlName="workoutsPerWeek"
+            data-cy="workoutsPerWeek"
+          />
+
+          <div
+            *ngIf="
+              settingsForm.get('workoutsPerWeek')!.invalid &&
+              (settingsForm.get('workoutsPerWeek')!.dirty || settingsForm.get('workoutsPerWeek')!.touched)
+            "
+          >
+            <small class="form-text text-danger" *ngIf="settingsForm.get('workoutsPerWeek')?.errors?.required">
+              Your Workouts Per Week is required.
+            </small>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-control-label" for="minutesPerWorkout">Minutes Per Week</label>
+          <input
+            type="text"
+            class="form-control"
+            id="minutesPerWorkout"
+            name="minutesPerWorkout"
+            placeholder="Minutes per week"
+            formControlName="minutesPerWorkout"
+            data-cy="minutesPerWorkout"
+          />
+
+          <div
+            *ngIf="
+              settingsForm.get('minutesPerWorkout')!.invalid &&
+              (settingsForm.get('minutesPerWorkout')!.dirty || settingsForm.get('minutesPerWorkout')!.touched)
+            "
+          >
+            <small class="form-text text-danger" *ngIf="settingsForm.get('workoutsPerWeek')?.errors?.required">
+              Minutes Per Workouts is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="dateOfBirth">Date of Birth</label>
+          <input
+            type="text"
+            class="form-control"
+            id="dateOfBirth"
+            name="dateOfBirth"
+            placeholder="Date of Birth"
+            formControlName="dateOfBirth"
+            data-cy="dateOfBirth"
+          />
+
+          <div
+            *ngIf="
+              settingsForm.get('dateOfBirth')!.invalid &&
+              (settingsForm.get('dateOfBirth')!.dirty || settingsForm.get('dateOfBirth')!.touched)
+            "
+          >
+            <small class="form-text text-danger" *ngIf="settingsForm.get('dateOfBirth')?.errors?.required">
+              Date of Birth is required.
+            </small>
+          </div>
+        </div>
+
+        <button type="submit" [disabled]="settingsForm.invalid" class="btn btn-primary" data-cy="submit">Save</button>
+      </form>
+    </div>
+  </div>
+</div>

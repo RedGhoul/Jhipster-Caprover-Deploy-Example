@@ -1,0 +1,33 @@
+{
+  "name": "FoodDay",
+  "fields": [
+    {
+      "fieldName": "createdDate",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "foodEntry",
+      "otherEntityRelationshipName": "foodDay",
+      "relationshipName": "foodEntry"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "appUser",
+      "otherEntityRelationshipName": "foodDay",
+      "relationshipName": "user"
+    }
+  ],
+  "entityTableName": "food_day",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210902143105"
+}

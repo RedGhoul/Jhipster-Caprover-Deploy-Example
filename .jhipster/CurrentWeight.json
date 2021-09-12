@@ -1,0 +1,32 @@
+{
+  "name": "CurrentWeight",
+  "fields": [
+    {
+      "fieldName": "weight",
+      "fieldType": "Float",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "appUser",
+      "otherEntityRelationshipName": "currentWeight",
+      "relationshipName": "user"
+    }
+  ],
+  "entityTableName": "current_weight",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210902143101"
+}

@@ -1,0 +1,79 @@
+{
+  "name": "AppUser",
+  "fields": [
+    {
+      "fieldName": "bio",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "height",
+      "fieldType": "Float",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "workoutsPerWeek",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "minutesPerWorkout",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "dateOfBirth",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "activityLevel",
+      "fieldType": "ActivityLevel",
+      "fieldValues": "Sedentary,LightlyActive,Active,VeryActive"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "appUser",
+      "relationshipName": "user",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "foodEntry",
+      "otherEntityRelationshipName": "user",
+      "relationshipName": "foodEntry"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "foodDay",
+      "otherEntityRelationshipName": "user",
+      "relationshipName": "foodDay"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "currentWeight",
+      "otherEntityRelationshipName": "user",
+      "relationshipName": "currentWeight"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "goalWeight",
+      "otherEntityRelationshipName": "user",
+      "relationshipName": "goalWeight"
+    }
+  ],
+  "entityTableName": "app_user",
+  "dto": "mapstruct",
+  "pagination": "infinite-scroll",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210902143106"
+}

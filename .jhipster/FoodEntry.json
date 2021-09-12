@@ -1,0 +1,41 @@
+{
+  "name": "FoodEntry",
+  "fields": [
+    {
+      "fieldName": "mealtype",
+      "fieldType": "MealType",
+      "fieldValues": "Lunch,Dinner,Snack"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "foodDay",
+      "otherEntityRelationshipName": "foodEntry",
+      "relationshipName": "foodDay"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "appUser",
+      "otherEntityRelationshipName": "foodEntry",
+      "relationshipName": "user"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "food",
+      "otherEntityRelationshipName": "foodEntry",
+      "relationshipName": "food",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "food_entry",
+  "dto": "mapstruct",
+  "pagination": "infinite-scroll",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210902143104"
+}
